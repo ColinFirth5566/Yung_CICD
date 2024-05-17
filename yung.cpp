@@ -6,6 +6,6 @@ int main()
 {
     cout << "Hello Yung" << endl;
 
-    sysyem("pause");
+    system("pause");
     return 0;
 }
