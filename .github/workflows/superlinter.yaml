@@ -5,19 +5,19 @@ on: push
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-18.04
+    runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: sudo apt-get install -y g++
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
 
       - name: Build
-        run: g++ -o output yung.cpp
+        run: cl /EHsc /Fe:output.exe yung.cpp
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: output
-          path: ./output
+          path: ./output.exe
